@@ -1,4 +1,4 @@
-pytorch_lighting==1.5.10
+pytorch_lightning==1.5.10
 torchaudio==0.10.1
 soundfile==0.10.3.post1
 torch==0.10.2
