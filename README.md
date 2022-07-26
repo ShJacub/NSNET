@@ -38,7 +38,7 @@ python train_nn.py num_workers
 ```
 cd /NSNet
 
-python my_tester.py path_to_weights
+python my_test_nn.py path_to_weights
 
 python MSE_calc.py num_cpus
 ```

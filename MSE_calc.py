@@ -7,7 +7,7 @@ import librosa
 import ray
 import sys
 
-num_cpus = sys.argv[1]
+num_cpus = int(sys.argv[1])
 ray.init(num_cpus=num_cpus)
 
 @ray.remote

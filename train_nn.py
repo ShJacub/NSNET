@@ -4,7 +4,7 @@ from argparse import Namespace
 import os
 import sys
 
-num_workes = sys.argv[1]
+num_workes = int(sys.argv[1])
 
 train_dir = '/datasets/wav/train'
 val_dir = '/datasets/wav/val'

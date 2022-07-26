@@ -6,7 +6,7 @@ import ray
 # from ray.util.multiprocessing import Pool
 import sys
 
-num_cpus = sys.argv[1]
+num_cpus = int(sys.argv[1])
 ray.init(num_cpus=num_cpus)
 
 
