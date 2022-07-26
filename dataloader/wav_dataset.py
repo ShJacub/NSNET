@@ -146,7 +146,7 @@ class WAVDataset(Dataset):
         if not self.test:
             return x_lps, x_ms, y_ms, noise_ms, VAD
         if self.test:
-            part_path = '/'.join(noisy_path.split('/')[4:])
+            part_path = '/'.join(noisy_path.split('/')[5:])
             return noisy_waveform.view(-1), clean_waveform.view(-1), x_stft, y_stft, x_lps, x_ms, y_ms, VAD, part_path
     
     def __moving_average(self, a, n=3):

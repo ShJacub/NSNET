@@ -2,9 +2,12 @@ from pytorch_lightning import Trainer
 from model.nsnet_model import NSNetModel
 from argparse import Namespace
 import os
+import sys
 
-train_dir = './datasets/wav/train'
-val_dir = './datasets/wav/val'
+num_workes = sys.argv[1]
+
+train_dir = '/datasets/wav/train'
+val_dir = '/datasets/wav/val'
 
 hparams = {'train_dir': train_dir,
            'val_dir': val_dir,
@@ -13,7 +16,7 @@ hparams = {'train_dir': train_dir,
            'n_gru_layers': 3,
            'gru_dropout': 0.2,
            'alpha': 0.35,
-           'num_workers' : 48}
+           'num_workers' : num_workes}
 
 model = NSNetModel(hparams=hparams)
 

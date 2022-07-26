@@ -5,8 +5,9 @@ import numpy as np
 import soundfile
 import librosa
 import ray
+import sys
 
-num_cpus = 12
+num_cpus = sys.argv[1]
 ray.init(num_cpus=num_cpus)
 
 @ray.remote
@@ -57,6 +58,6 @@ def Calculate(clean_dir, denoised_dir):
 
 
 if __name__ == '__main__':
-    clean_dir = 'datasets/wav/val/clean'
+    clean_dir = '/datasets/wav/val/clean'
     denoised_dir = 'denoised'
     Calculate(clean_dir, denoised_dir)

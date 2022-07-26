@@ -1,15 +1,15 @@
 # Ссылка на оригинальный репозиторий
 
-https://github.com/seorim0/DCCRN-with-various-loss-functions.git
+https://github.com/GuillaumeVW/NSNet.git
 
 # Клонирование репозитория
 ```
-git clone https://github.com/ShJacub/DCCRN.git
+git clone https://github.com/ShJacub/NSNet.git
 ```
 
 # Создание и запуск docker-контейнера
 ```
-docker create -v absolute_DCCRN_directory:/DCCRN -v absolute_path_to_dataset:/datasets --runtime=nvidia -it -p 1111:1111 --ipc=host --name=My_Docker floydhub/pytorch:1.3.0-gpu.cuda10cudnn7-py3.52 /bin/bash
+docker create -v absolute_NSNet_directory:/NSNet -v absolute_path_to_dataset:/datasets --runtime=nvidia -it -p 1111:1111 --ipc=host --name=My_Docker floydhub/pytorch:1.3.0-gpu.cuda10cudnn7-py3.52 /bin/bash
 
 docker start My_Docker
 
@@ -18,27 +18,27 @@ docker exec -it My_Docker /bin/bash
 
 # Установка библиотек
 ```
-cd /DCCRN
+cd /NSNet
 pip install -r requirements.txt
 ```
 
 # Перевод набора данных в wav формат
 ```
-cd /DCCRN
+cd /NSNet
 
-python MelToWav.py
+python MelToWav.py num_cpus
 ```
 
 # Обучение
 ```
-python trainer.py
+python train_nn.py num_workers
 ```
 
 # Подсчёт метрики MSE
 ```
-cd /DCCRN
+cd /NSNet
 
 python my_tester.py path_to_weights
 
-python MSE_calc.py 
+python MSE_calc.py num_cpus
 ```

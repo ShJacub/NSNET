@@ -12,6 +12,7 @@ from dataloader.wav_dataset import WAVDataset
 from model.nsnet_model import NSNetModel
 from argparse import Namespace
 import os
+import sys
 
 def MakeDirs(direc, new_direc):
     if not os.path.exists(new_direc):
@@ -20,13 +21,17 @@ def MakeDirs(direc, new_direc):
         if not os.path.exists(os.path.join(new_direc, folder_name)):
             os.mkdir(os.path.join(new_direc, folder_name))
 
-MakeDirs('./datasets/wav/val/noisy', 'denoised')
+path_to_wights = sys.argv[1]
 
-model = NSNetModel.load_from_checkpoint(Path('lightning_logs/version_0/checkpoints/epoch15.ckpt'))
+if not os.path.exists('denoised'):
+    os.mkdir('denoised')
+MakeDirs('/datasets/wav/val/noisy', 'denoised')
 
-os.environ['CUDA_VISIBLE_DEVICES'] = '5'
+model = NSNetModel.load_from_checkpoint(Path(path_to_wights))
 
-testing_dir = Path('./datasets/wav/val')
+# os.environ['CUDA_VISIBLE_DEVICES'] = '5'
+
+testing_dir = Path('/datasets/wav/val')
 n_fft = 512
 dataset = WAVDataset(dir=testing_dir, n_fft=n_fft, test=True)
 dataloader = DataLoader(dataset, batch_size=1, drop_last=False, shuffle=True)

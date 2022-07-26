@@ -10,9 +10,11 @@ from torch import istft
 
 from dataloader.wav_dataset import WAVDataset
 from model.nsnet_model import NSNetModel
-from argparse import Namespace
+import sys
 
-model = NSNetModel.load_from_checkpoint(Path('lightning_logs/version_0/checkpoints/epoch15.ckpt'))
+path_to_weights = sys.arv[1]
+
+model = NSNetModel.load_from_checkpoint(Path(path_to_weights))
 # train_dir = './WAVs/dataset/training'
 # val_dir = './WAVs/dataset/validation'
 
@@ -25,9 +27,9 @@ model = NSNetModel.load_from_checkpoint(Path('lightning_logs/version_0/checkpoin
 #            'alpha': 0.35}
 
 # model = NSNetModel()
-os.environ['CUDA_VISIBLE_DEVICES'] = '5'
+# os.environ['CUDA_VISIBLE_DEVICES'] = '5'
 
-testing_dir = Path('./datasets/wav/val')
+testing_dir = Path('/datasets/wav/val')
 n_fft = 512
 dataset = WAVDataset(dir=testing_dir, n_fft=n_fft, test=True)
 dataloader = DataLoader(dataset, batch_size=1, drop_last=False, shuffle=True)
